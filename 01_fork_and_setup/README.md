@@ -2,10 +2,10 @@
 このステップでは、リポジトリのフォークと GitHub Actions のセットアップ方法を解説し、Go アプリケーションをさくらの AppRun サービスにデプロイするための準備を行います。
 
 > [!IMPORTANT]
-> 目的: GitHub Actions でワークフローを実行するための設定方法を理解する
+> **目的**: GitHub Actions でワークフローを実行するための設定方法を理解する
 
 > [!IMPORTANT]
-> ゴール: GitHub Actions のパーミッション、シークレット、変数の設定と、トリガーによるワークフロー実行の確認
+> **ゴール**: GitHub Actions のパーミッション、シークレット、変数の設定と、トリガーによるワークフロー実行の確認
 
 ## GitHub Actions の有効化方法
 ![GitHub Actions Workflow 無効化時の画面](workflow-disable.png)
@@ -17,7 +17,19 @@
 ![GitHub Actions Secrets 設定画面](new-secret.png)
 ![GitHub Actions Variables 設定画面](new-variable.png)
 ![Secrets の具体的な設定例](set-secret.png)
+- Slack の Incoming Webhook URL:
+````
+SLACK_WEBHOOK_URL
+````
 ![Variables の具体的な設定例](set-variable.png)
+- 自分の名前:
+````
+AUTHOR_NAME
+````
+- 自分の GitHub リポジトリリンク:
+````
+REPOSITORY
+````
 ![Secrets 設定後の確認画面](varify-secret.png)
 ![Variables 設定後の確認画面](varify-variables.png)
 

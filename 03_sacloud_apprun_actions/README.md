@@ -2,10 +2,10 @@
 このステップでは、GitHub Actions を利用して Go アプリケーションをさくらの AppRun サービスにデプロイする方法を解説します。
 
 > [!IMPORTANT]
-> 目的: GitHub Actions および Composite Actions の基礎を理解した上で、Composite Actions sacloud_apprun_actions を使い、データ永続化を含む Go アプリケーションを Sakura の AppRun サービスにデプロイする方法を学ぶ
+> **目的**: GitHub Actions および Composite Actions の基礎を理解した上で、Composite Actions sacloud_apprun_actions を使い、データ永続化を含む Go アプリケーションを Sakura の AppRun サービスにデプロイする方法を学ぶ
 
 > [!IMPORTANT]
-> ゴール: GitHub Actions で Go アプリケーションを Sakura の AppRun にデプロイし、同時に Object Storage を作成してデータ永続化を実現する。これにより、実習で GitHub Actions を活用した効率的なデプロイフローを体験する。
+> **ゴール**: GitHub Actions で Go アプリケーションを Sakura の AppRun にデプロイし、同時に Object Storage を作成してデータ永続化を実現する。これにより、実習で GitHub Actions を活用した効率的なデプロイフローを体験する。
 
 ## sacloud_apprun_actions とは？
 `sacloud_apprun_actions` は、Go アプリケーションをさくらの AppRun サービスにデプロイするための GitHub Actions ワークフローです。アプリケーションのビルド、コンテナレジストリへのプッシュ、AppRun へのデプロイを自動化します。また、データ永続化のためのオブジェクトストレージバケットの作成も含まれており、アプリケーションの再起動や再デプロイ後もデータの保存・取得が可能です。
@@ -33,13 +33,48 @@
           litestream-replicate-interval: 10s
 ````
 2. **Secrets と Variables の設定**: リポジトリの設定で必要な GitHub Actions シークレットと変数を作成します。
-   - `REGISTRY`: コンテナレジストリの URL
-   - `REGISTRY_USER`: コンテナレジストリのユーザー名
-   - `REGISTRY_PASSWORD`: コンテナレジストリのパスワード
-   - `SAKURA_API_KEY`: さくらの API キー
-   - `SAKURA_API_SECRET`: さくらの API シークレット
-   - `STORAGE_ACCESS_KEY`: オブジェクトストレージのアクセスキー
-   - `STORAGE_SECRET_KEY`: オブジェクトストレージのシークレットキー
+   - コンテナレジストリの URL:
+````
+REGISTRY
+````
+   - コンテナレジストリのユーザー名:
+````
+REGISTRY_USER
+````
+   - コンテナレジストリのパスワード:
+````
+REGISTRY_PASSWORD
+````
+   - さくらの API キー:
+````
+SAKURA_API_KEY
+````
+   - さくらの API シークレット:
+````
+SAKURA_API_SECRET
+````
+   - オブジェクトストレージのバケット名:
+````
+STORAGE_BUCKET_NAME
+````
+   - オブジェクトストレージのアクセスキー:
+````
+STORAGE_ACCESS_KEY
+````
+   - オブジェクトストレージのシークレットキー:
+````
+STORAGE_SECRET_KEY
+````
+3. **ワークフローの実行**: ワークフローを手動でトリガーするか、特定のイベント（例: push, pull request）で自動実行します。
+
+## データ永続化の実践方法
+AppRun はステートレスなため、デプロイのたびにアプリケーションが再起動されます。データ永続化のため、SQLite と Litestream を利用し、アプリ再起動後もデータが保持されるようにします。
+1. SQLite とは
+   - SQLite は軽量なデータベースで、小規模アプリや組み込み用途に最適です。データは単一ファイルに保存され、管理やバックアップが容易です。
+2. Litestream とは
+`````
+STORAGE_SECRET_KEY
+````
 3. **ワークフローの実行**: ワークフローを手動でトリガーするか、特定のイベント（例: push, pull request）で自動実行します。
 
 ## データ永続化の実践方法

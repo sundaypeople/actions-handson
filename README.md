@@ -2,10 +2,10 @@
 このリポジトリは、Actions の基礎と sacloud_apprun_actions を使って、アプリケーションをさくらの AppRun にデプロイすることのイメージを学ぶためのハンズオンです。
 
 > [!IMPORTANT]
-> 目的: GitHub Actions の基礎を理解し、Actions を使ったアプリケーションのデプロイフローを体験すること
+> **目的**: GitHub Actions の基礎を理解し、Actions を使ったアプリケーションのデプロイフローを体験すること
 
 > [!IMPORTANT]
-> ゴール: ハンズオンを通じて、各ステップの目的とゴールを達成し、GitHub Actions をインターンの開発に活用する方法をイメージつけるようにすること
+> **ゴール**: ハンズオンを通じて、各ステップの目的とゴールを達成し、GitHub Actions をインターンの開発に活用する方法をイメージつけるようにすること
 
 ## 目次
 1. [GitHub Actions 入門](00_introduction_Github_Actions/README.md)

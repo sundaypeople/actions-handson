@@ -2,10 +2,10 @@
 このリポジトリは、Go アプリケーションをさくらの AppRun サービスにデプロイするための GitHub Actions のハンズオン入門を提供します。リポジトリのフォーク、GitHub Actions のセットアップ、アプリケーションのデプロイまでの手順をガイドします。
 
 > [!IMPORTANT]
-> 目的: GitHub Actions の概要を理解すること
+> **目的**: GitHub Actions の概要を理解すること
 
 > [!IMPORTANT]
-> ゴール: GitHub Actions の基本コンポーネントについて理解すること
+> **ゴール**: GitHub Actions の基本コンポーネントについて理解すること
 
 ## GitHub Actions とは？
 GitHub Actions は、GitHub プロジェクトのための CI/CD ワークフローを作成できる強力な自動化ツールです。リポジトリから直接、ビルド・テスト・デプロイなどのタスクを自動化できます。
