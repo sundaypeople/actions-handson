@@ -10,6 +10,10 @@
 ## sacloud_apprun_actions とは？
 `sacloud_apprun_actions` は、Go アプリケーションをさくらの AppRun サービスにデプロイするための GitHub Actions ワークフローです。アプリケーションのビルド、コンテナレジストリへのプッシュ、AppRun へのデプロイを自動化します。また、データ永続化のためのオブジェクトストレージバケットの作成も含まれており、アプリケーションの再起動や再デプロイ後もデータの保存・取得が可能です。
 
+>[!NOTE]
+> 今回利用する actions: [sacloud-apprun-action](https://github.com/ippanpeople/sacloud-apprun-action/blob/master/action.yaml)
+
+
 ## sacloud_apprun_actions の使い方
 1. **ワークフロー例**: `sacloud_apprun_actions` ワークフローが含まれるリポジトリをフォークし、アプリケーションに合わせてワークフローファイルをカスタマイズします。
 ````yaml
@@ -32,6 +36,10 @@
           sqlite-db-path: ./data/app.db
           litestream-replicate-interval: 10s
 ````
+
+> [!NOTE]
+> 前ステップに紹介した　Composite Actions を利用することで、　元々[sacloud-apprun-action](https://github.com/ippanpeople/sacloud-apprun-action/blob/master/action.yaml)のように複数のステップを持つアクションを簡潔にまとめることができます。
+
 2. **Secrets と Variables の設定**: リポジトリの設定で必要な GitHub Actions シークレットと変数を作成します。
    - コンテナレジストリの URL:
 ````

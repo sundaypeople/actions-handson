@@ -8,9 +8,20 @@
 > **ゴール**: GitHub Actions のパーミッション、シークレット、変数の設定と、トリガーによるワークフロー実行の確認
 
 ## GitHub Actions の有効化方法
+1. **ワークフローが無効化されている状態を確認**
+   - フォーク直後や新規リポジトリでは、GitHub Actions ワークフローが無効化されている場合があります。
 ![GitHub Actions Workflow 無効化時の画面](workflow-disable.png)
+2. **なぜワークフローが無効化されているのか確認**
+    - GitHub Actions は、リポジトリの設定でワークフローのパーミッションが適切に設定されていない場合に無効化されます。
+    - GitHub Actions は、.github/workflow ディレクトリ内にワークフロー定義ファイルが存在しない場合、またはワークフローのパーミッションが適切に設定されていない場合に無効化されます。
 ![なぜワークフローが無効化されているのか](why-workflow-disable.png)
-![ワークフローを有効化する方法](modify-to-enable.png)
+3. **ワークフローを有効化する方法**
+    - Settings > Actions > General に移動し Actions permissions を「Allow all actions and reusable workflows」に設定します。
+    - 既存の .github/workflows-disable を正しくリネームして .github/workflows にします。
+![ワークフローを有効化する方法 1](set-actions-permissions.png)
+![ワークフローを有効化する方法 2](modify-to-enable.png)
+4. **有効化後の状態を確認**
+   - 有効化が完了すると、ワークフローが実行可能な状態になります。
 ![有効化後の状態](workflow-enabled.png)
 
 ## GitHub Actions のシークレットと変数の設定方法
@@ -33,10 +44,20 @@ REPOSITORY
 ![Secrets 設定後の確認画面](varify-secret.png)
 ![Variables 設定後の確認画面](varify-variables.png)
 
+## GitHub Actions ワークフローの実行方法
+1. **ワークフローの実行**: リポジトリの Actions タブに移動し、対象のワークフローを選択します。
+2. **ワークフローの実行**: 「Run workflow」ボタンをクリックし、
+   - ブランチを選択（通常は `main` または `master`）
+   - 必要に応じて入力パラメータを設定
+3. **実行の確認**: ワークフローが正常に実行されると、Slack チャンネルにメッセージが送信されます。これにより、GitHub Actions のセットアップが正しく行われたことを確認できます。
+
+> [!WARNING]
+> 注意: ワークフローの実行には、`Run workflow` ボタンを連打しないように
+
 ## To Do リスト
 - [ ] (リポジトリをフォークする)[https://github.com/ippanpeople/test]
 - [ ] GitHub Actions をセットアップする
-    - [ ] ワークフローのパーミッションを「Read and write」および「Allow GitHub Actions to create and approve pull requests」に設定
+    - [ ] ワークフローのパーミッションを「Allow all actions and reusable workflows」に設定
     - [ ] Actions Secret `SLACK_WEBHOOK_URL` を作成し、Slack の Incoming Webhook URL を登録
     - [ ] Actions Variable `AUTHOR_NAME` を作成し、自分の名前を登録
     - [ ] Actions Variable `REPOSITORY` を作成し、自分の GitHub リポジトリリンクを登録
