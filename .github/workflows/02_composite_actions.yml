@@ -8,9 +8,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: Notify to Slack
-      uses: ippanpeople/slack-notify-action@v0.0.4
+      uses: ippanpeople/slack-notify-action@v0.0.6
       with:
-        webhook_url: ${{ secrets.SLACK_WEBHOOK_URL }}
+        webhook_url: https://github.com/ippanpeople/sacloud-apprun-action/blob/master/action.yaml
         thread_ts: "1753841968.598019"
         pretext: "STEP2: composite actions ✅ <!channel>"
         author_name: ":github_white: ${{ vars.AUTHOR_NAME }}"
