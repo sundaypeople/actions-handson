@@ -5,14 +5,13 @@
 > **目的**: GitHub Actions および Composite Actions の基礎を理解した上で、Composite Actions sacloud_apprun_actions を使い、データ永続化を含む Go アプリケーションを Sakura の AppRun サービスにデプロイする方法を学ぶ
 
 > [!IMPORTANT]
-> **ゴール**: GitHub Actions で Go アプリケーションを Sakura の AppRun にデプロイし、同時に Object Storage を作成してデータ永続化を実現する。これにより、実習で GitHub Actions を活用した効率的なデプロイフローを体験する。
+> **ゴール**: GitHub Actions で Go アプリケーションを Sakura の AppRun にデプロイし、同時に Object Storage を作成してデータ永続化を実現する。これにより、元々手動で行っていたデプロイ作業を自動化し、効率的な開発フローを体験する
 
 ## sacloud_apprun_actions とは？
-`sacloud_apprun_actions` は、Go アプリケーションをさくらの AppRun サービスにデプロイするための GitHub Actions ワークフローです。アプリケーションのビルド、コンテナレジストリへのプッシュ、AppRun へのデプロイを自動化します。また、データ永続化のためのオブジェクトストレージバケットの作成も含まれており、アプリケーションの再起動や再デプロイ後もデータの保存・取得が可能です。
+`sacloud_apprun_actions` は、自動的に Go アプリケーションをさくらの AppRun サービスにデプロイするための GitHub Actions ワークフローです。**アプリケーションのビルド、コンテナレジストリへのプッシュ、AppRun へのデプロイを自動化します**。また、**データ永続化のためのオブジェクトストレージバケットの作成**機能も含まれており、アプリケーションの再起動や再デプロイ後もデータの保存・取得が可能です。
 
 >[!NOTE]
 > 今回利用する actions: [sacloud-apprun-action](https://github.com/ippanpeople/sacloud-apprun-action/blob/master/action.yaml)
-
 
 ## sacloud_apprun_actions の使い方
 1. **ワークフロー例**: `sacloud_apprun_actions` ワークフローが含まれるリポジトリをフォークし、アプリケーションに合わせてワークフローファイルをカスタマイズします。
@@ -71,16 +70,6 @@ STORAGE_ACCESS_KEY
 ````
    - オブジェクトストレージのシークレットキー:
 ````
-STORAGE_SECRET_KEY
-````
-3. **ワークフローの実行**: ワークフローを手動でトリガーするか、特定のイベント（例: push, pull request）で自動実行します。
-
-## データ永続化の実践方法
-AppRun はステートレスなため、デプロイのたびにアプリケーションが再起動されます。データ永続化のため、SQLite と Litestream を利用し、アプリ再起動後もデータが保持されるようにします。
-1. SQLite とは
-   - SQLite は軽量なデータベースで、小規模アプリや組み込み用途に最適です。データは単一ファイルに保存され、管理やバックアップが容易です。
-2. Litestream とは
-`````
 STORAGE_SECRET_KEY
 ````
 3. **ワークフローの実行**: ワークフローを手動でトリガーするか、特定のイベント（例: push, pull request）で自動実行します。

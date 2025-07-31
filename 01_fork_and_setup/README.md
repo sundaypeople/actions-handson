@@ -25,30 +25,34 @@
 ![有効化後の状態](workflow-enabled.png)
 
 ## GitHub Actions のシークレットと変数の設定方法
+GitHub Actions では、外部サービスへの認証情報や個人情報などを安全に管理するために「シークレット（Secrets）」と「変数（Variables）」を利用します。シークレットは主にパスワードや API キーなどの機密情報を、変数はワークフロー内で再利用したい値（例：自分の名前やリポジトリリンクなど）を格納します。これらはリポジトリの Settings > Secrets and variables から設定できます。
+
+1. **シークレットの設定**: Slack の Incoming Webhook URL など、外部サービス連携に必要な情報を登録します。
+   - 例: Slack の Incoming Webhook URL
+   ````
+   SLACK_WEBHOOK_URL
+   ````
 ![GitHub Actions Secrets 設定画面](new-secret.png)
-![GitHub Actions Variables 設定画面](new-variable.png)
 ![Secrets の具体的な設定例](set-secret.png)
-- Slack の Incoming Webhook URL:
-````
-SLACK_WEBHOOK_URL
-````
+2. **変数の設定**: ワークフロー内で使う名前やリポジトリリンクなどを登録します。
+   - 例: 自分の名前
+   ````
+   AUTHOR_NAME
+   ````
+   - 例: 自分の GitHub リポジトリリンク
+   ````
+   REPOSITORY
+   ````
+![GitHub Actions Variables 設定画面](new-variable.png)
 ![Variables の具体的な設定例](set-variable.png)
-- 自分の名前:
-````
-AUTHOR_NAME
-````
-- 自分の GitHub リポジトリリンク:
-````
-REPOSITORY
-````
+3. **設定後の確認**: 設定が正しく反映されているか確認します。
 ![Secrets 設定後の確認画面](varify-secret.png)
 ![Variables 設定後の確認画面](varify-variables.png)
 
 ## GitHub Actions ワークフローの実行方法
 1. **ワークフローの実行**: リポジトリの Actions タブに移動し、対象のワークフローを選択します。
 2. **ワークフローの実行**: 「Run workflow」ボタンをクリックし、
-   - ブランチを選択（通常は `main` または `master`）
-   - 必要に応じて入力パラメータを設定
+![Run workflow](run-workflow.png)
 3. **実行の確認**: ワークフローが正常に実行されると、Slack チャンネルにメッセージが送信されます。これにより、GitHub Actions のセットアップが正しく行われたことを確認できます。
 
 > [!WARNING]
