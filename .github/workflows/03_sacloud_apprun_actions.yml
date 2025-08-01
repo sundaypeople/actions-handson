@@ -24,7 +24,7 @@ jobs:
           container-registry-password: ${{ secrets.REGISTRY_PASSWORD }}
           port: '8080'
           # SQLite + Litestream を使う場合は以下も指定
-          object-storage-bucket: w-rin-test
+          object-storage-bucket: ${{ secrets.STORAGE_BUCKET_NAME }}
           object-storage-access-key: ${{ secrets.STORAGE_ACCESS_KEY }}
           object-storage-secret-key: ${{ secrets.STORAGE_SECRET_KEY }}
           sqlite-db-path: ./data/app.db
