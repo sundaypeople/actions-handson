@@ -39,7 +39,7 @@
 > [!NOTE]
 > 前ステップに紹介した　Composite Actions を利用することで、　元々[sacloud-apprun-action](https://github.com/ippanpeople/sacloud-apprun-action/blob/master/action.yaml)のように複数のステップを持つアクションを簡潔にまとめることができます。
 
-2. **Secrets と Variables の設定**: リポジトリの設定で必要な GitHub Actions シークレットと変数を作成します。
+2. **Secretsの設定**: リポジトリの設定で必要な GitHub Actions シークレットを作成します。
    - コンテナレジストリの URL:
 ````
 REGISTRY
@@ -90,14 +90,15 @@ AppRun はステートレスなため、デプロイのたびにアプリケー�
 > 注意: SQLite と Litestream を利用する際は、システム設計の妥当性に注意してください。SQLite は小規模用途に適していますが、高負荷や大量データではパフォーマンス上の制約があります。特に、**TPS (Transactions Per Second)** や、**QPS (Queries Per Second)**、などの観点で制約が発生しやすいです。Litestream も設定や運用方法によってはデータの安全性・一貫性 (**Consistency**) に注意が必要です。システム要件に応じて、適切なデータベースやストレージ方式の選定を検討してください。
 
 ## To Do リスト
-- [ ] AppRun・オブジェクトストレージのデプロイ準備として Actions Secrets と Variables を設定
+- [ ] AppRun・オブジェクトストレージのデプロイ準備として Actions Secrets を設定
     - [ ] Actions Secret `REGISTRY` にコンテナレジストリの URL を登録
     - [ ] Actions Secret `REGISTRY_USER` にコンテナレジストリのユーザー名を登録
     - [ ] Actions Secret `REGISTRY_PASSWORD` にコンテナレジストリのパスワードを登録
     - [ ] Actions Secret `SAKURA_API_KEY` にさくらの API キーを登録
     - [ ] Actions Secret `SAKURA_API_SECRET` にさくらの API シークレットを登録
-    - [ ] Actions Variable `STORAGE_ACCESS_KEY` にオブジェクトストレージのアクセスキーを登録
-    - [ ] Actions Variable `STORAGE_SECRET_KEY` にオブジェクトストレージのシークレットキーを登録
+    - [ ] Actions Secret `STORAGE_BUCKET_NAME` にオブジェクトストレージのバケット名を登録
+    - [ ] Actions Secret `STORAGE_ACCESS_KEY` にオブジェクトストレージのアクセスキーを登録
+    - [ ] Actions Secret `STORAGE_SECRET_KEY` にオブジェクトストレージのシークレットキーを登録
 - [ ] ワークフローをテストし、AppRun がデプロイされ Slack に成功メッセージが送信されることを確認
     - [ ] リポジトリの Actions タブに移動
     - [ ] 対象ワークフローを選択し「Run workflow」をクリック
